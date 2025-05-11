@@ -13,20 +13,5 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      - uses: actions/checkout@v3
-        if: success() || failure()
       - run: |
-          mkdir -p tests/reports
-          pytest tests/test_login_page.py --browser=chrome --html=tests/reports/reports.html
-          chmod 777 tests/reports/
-      - name: Set output
-        if: success() || failure()
-        id: results
-        run: echo "artifactPath=tests/reports/" >> $GITHUB_OUTPUT
-
-      - uses: actions/upload-artifact@v4
-        if: success() || failure()
-        with:
-          name: test-report
-          path: ${{ steps.results.outputs.artifactPath }}
+          pytest tests/test_login_page.py --browser=chrome
