@@ -20,5 +20,5 @@ jobs:
 
       - name: Run tests
         run: |
-          cd se-project/tests
+          cd tests
           pytest test_login_page.py
