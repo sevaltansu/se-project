@@ -19,10 +19,10 @@ jobs:
 
       - name: Run Pytest and Generate Report
         run: |
-          cd se-project/tests
+          cd tests
           mkdir -p reports
           pytest test_login_page.py --browser=chrome --html=reports/reports.html
-          chmod 777 reports
+          chmod 777 /home/runner/work/se-project/se-project/tests/reports/
 
       - name: Set output
         if: success() || failure()
